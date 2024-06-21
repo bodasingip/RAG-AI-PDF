@@ -45,9 +45,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -63,5 +60,4 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'ask-optimus'
-          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1B6343F7FBC14295AF638A3FF26D74DF }}
